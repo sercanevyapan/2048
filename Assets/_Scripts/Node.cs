@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class Node : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Vector2 Pos => transform.position;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Block OccupiedBlock;
 }

@@ -59,9 +59,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: FredokaOne
   m_EditorClassIdentifier: 
-  hashCode: -1360511005
+  hashCode: -958707404
   material: {fileID: 8311910087866534304}
-  materialHashCode: 155242851
+  materialHashCode: 1551065492
   m_Version: 1.1.0
   m_SourceFontFileGUID: 7c134f0168e0486468b38a74a37305bb
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 7c134f0168e0486468b38a74a37305bb, type: 3}
@@ -2633,7 +2633,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: FredokaOne-Regular SDF Material
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: UNDERLAY_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -2663,6 +2663,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _Ambient: 0.5
     - _Bevel: 0.5
@@ -2708,8 +2709,8 @@ Material:
     - _TextureHeight: 1024
     - _TextureWidth: 1024
     - _UnderlayDilate: 0
-    - _UnderlayOffsetX: 0
-    - _UnderlayOffsetY: 0
+    - _UnderlayOffsetX: 0.244
+    - _UnderlayOffsetY: 0.183
     - _UnderlaySoftness: 0
     - _VertexOffsetX: 0
     - _VertexOffsetY: 0
