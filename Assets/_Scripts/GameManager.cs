@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -17,7 +18,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float _travelTime = 0.2f;
     [SerializeField] private int _winCondition = 2048;
 
-    [SerializeField] private GameObject _winScreen, _loseScreen;
+    [SerializeField] private GameObject _winScreen, _loseScreen ;
+    [SerializeField] private TMP_Text _highScore;
+
+    [SerializeField] private Score score;
+
 
     private List<Node> _nodes;
     private List<Block> _blocks;
@@ -25,6 +30,9 @@ public class GameManager : MonoBehaviour
     private int _round;
 
     private BlockType GetBlockTypeByValue(int value) => _types.First(t => t.Value == value);
+
+
+
 
     private void Start()
     {
@@ -39,19 +47,27 @@ public class GameManager : MonoBehaviour
         {
             case GameState.GenerateLevel:
                 GenerateGrid();
+                GetScoreInfo();
                 break;
             case GameState.SpawingBlocks:
                 SpawnBlocks(_round++==0 ? 2 : 1);
                 break;
             case GameState.WaitingInput:
+               
                 break;
             case GameState.Moving:
+           
                 break;
             case GameState.Win:
                 _winScreen.SetActive(true);
+           
+                SetScoreInfo(score);
+
+                score.gameObject.SetActive(false);
                 break;
             case GameState.Lose:
                 _loseScreen.SetActive(true);
+        
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
@@ -193,6 +209,23 @@ public class GameManager : MonoBehaviour
     Node GetNodeAtPosition(Vector2 pos)
     {
         return _nodes.FirstOrDefault(n => n.Pos == pos);
+    }
+
+  
+    private void SetScoreInfo(Score score)
+    {
+        Debug.Log(score.scoreAmount);
+        int oldScore = PlayerPrefs.GetInt("Score");
+        if (score.scoreAmount<oldScore||oldScore==0)
+            PlayerPrefs.SetInt("Score", (int)score.scoreAmount);
+
+        GetScoreInfo();
+    }
+
+    private void GetScoreInfo()
+    {
+        
+            _highScore.text =  PlayerPrefs.GetInt("Score").ToString() + " High Score";
     }
 }
 
